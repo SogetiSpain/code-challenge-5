@@ -9,6 +9,8 @@ No siempre tenemos el lujo de trabajar desde cero. Algunas veces tenemos que uti
 
 Somos los responsables de implementar un sistema de reservas de billetes de tren, y nos piden completar el sistema del que ya existen algunas piezas. Esta vez los tests unitarios serán más bien de integración, porque no sólo llamarán a nuestra clase de reserva sino también a sistemas externos que tendremos que controlar.
 
+El ejemplo del challenge está sacado del GitHub de Emily Bache: https://github.com/emilybache/KataTrainReservation.
+
 Reglas de negocio de las reservas ferroviarias
 ----------------------------------------------
 Como norma general, no se puede reservar más del 70% del pasaje del tren, así que se deja un 30% de la capacidad para la venta en taquilla. Idealmente, todos los vagones del tren deberían estar llenos al un 70% máximo, pero no siempre es el caso. Hay otra regla de negocio que dice que todos los asientos de una misma reserva _deben_ ir juntos en el mismo vagón. Si para hacer esto hay que ocupar ese vagón a más del 70%, se permite, siempre y cuando la ocupación general del tren no sea de más de 70%.  
@@ -70,7 +72,7 @@ http://localhost:XYz/reset/express_2000
 
 Restricciones
 -------------
-*  **Se tienen que implementar los tests de integración y de funcionalidad con MSTest** (el estándar incluído con Visual Studio)
+*  **Se tienen que implementar los tests de integración y de funcionalidad con MSTest** (el estándar incluído con Visual Studio). Podéis usar el código starter de https://github.com/emilybache/KataTrainReservation/tree/master/csharp
 * Vigilar de que el programa resultante esté debidamente encapsulado en clases y métodos públicos y privados
 * El código debe ser compatible con Visual Studio 2013 y NET Framework 4.5.2
 
