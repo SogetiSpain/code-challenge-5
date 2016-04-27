@@ -1,5 +1,6 @@
 ﻿namespace Amaia_ReservaTrenes
 {
+    using CrossCutting.Enum;
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
@@ -24,20 +25,16 @@
 
                 try
                 {
-                    HttpResponseMessage response = await client.GetAsync("http://localhost:9600/data_for_train/express_2000");
+                    var factoryTrainInfo = new TrainInformationFactory();
+                    var info = factoryTrainInfo.GetTrainInfo(Train.Express_2000);
+                    await info.GetInformation(client);
 
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var seats = await response.Content.ReadAsStringAsync();
-                        var dict = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, SeatProperty>>>(seats);
-                    }
+
                 }
                 catch (Exception ex)
                 {
-
-                    throw;
+                    Console.WriteLine(ex.Message);
                 }
-
             }
         }
     }

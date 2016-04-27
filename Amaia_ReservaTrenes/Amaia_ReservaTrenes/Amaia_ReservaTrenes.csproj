@@ -50,10 +50,20 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SeatProperty.cs" />
+    <Compile Include="TrainFactory\Express2000_Train.cs" />
+    <Compile Include="TrainFactory\ITrainInformation.cs" />
+    <Compile Include="TrainFactory\Local1000_Train.cs" />
+    <Compile Include="TrainInformationFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CrossCutting\CrossCutting.csproj">
+      <Project>{12d9f7dc-2b96-477b-a47e-318cacbcbfae}</Project>
+      <Name>CrossCutting</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
