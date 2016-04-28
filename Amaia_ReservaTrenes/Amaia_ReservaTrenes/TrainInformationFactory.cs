@@ -8,9 +8,9 @@
     using System.Threading.Tasks;
     using TrainFactory;
 
-    public class TrainInformationFactory
+    public static class TrainInformationFactory
     {
-        private ITrainInformation GetInformation(Train train)
+        private static ITrainInformation GetInformation(Train train)
         {
             switch (train)
             {
@@ -26,7 +26,7 @@
             }
         }
 
-        public ITrainInformation GetTrainInfo(Train train)
+        public static ITrainInformation GetTrainInfo(Train train)
         {
            return GetInformation(train);
         }

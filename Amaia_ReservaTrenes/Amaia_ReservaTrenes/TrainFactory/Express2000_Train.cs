@@ -4,17 +4,32 @@
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading.Tasks;
+    using System.Linq;
+    using System;
+    using CrossCutting.Resources;
+    using CrossCutting.Constants;
 
     public class Express2000_Train : ITrainInformation
     {
-        public async Task GetInformation(HttpClient client)
+        public async Task<Dictionary<string, SeatProperty>> GetInformation(HttpClient client)
         {
-            HttpResponseMessage response = await client.GetAsync("http://localhost:9600/data_for_train/express_2000");
+            HttpResponseMessage response = await client.GetAsync(Constants.TrainInfo.Express2000);
 
             if (response.IsSuccessStatusCode)
             {
-                var seats = await response.Content.ReadAsStringAsync();
-                var dict = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, SeatProperty>>>(seats);
+                try
+                {
+                    var result = await response.Content.ReadAsStringAsync();
+                    var seats = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, SeatProperty>>>(result);
+                    return seats.Values.First();
+                }
+                catch (Exception)
+                {
+                    throw new Exception(Exceptions.NoCoachError);
+                }
+            }
+            else {
+                throw new Exception(Exceptions.ConnectionGettingErrors);
             }
         }
     }

@@ -25,11 +25,8 @@
 
                 try
                 {
-                    var factoryTrainInfo = new TrainInformationFactory();
-                    var info = factoryTrainInfo.GetTrainInfo(Train.Express_2000);
-                    await info.GetInformation(client);
-
-
+                    var factoryTrainInfo = TrainInformationFactory.GetTrainInfo(Train.Express_2000);
+                    var a = await factoryTrainInfo.GetInformation(client);
                 }
                 catch (Exception ex)
                 {
