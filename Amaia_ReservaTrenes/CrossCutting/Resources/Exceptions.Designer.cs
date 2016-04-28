@@ -77,5 +77,14 @@ namespace CrossCutting.Resources {
                 return ResourceManager.GetString("NoCoachError", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is not error, please choice another train.
+        /// </summary>
+        public static string TrainChoiceError {
+            get {
+                return ResourceManager.GetString("TrainChoiceError", resourceCulture);
+            }
+        }
     }
 }

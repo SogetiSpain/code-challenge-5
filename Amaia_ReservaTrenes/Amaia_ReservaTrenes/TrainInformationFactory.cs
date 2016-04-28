@@ -1,6 +1,7 @@
 ﻿namespace Amaia_ReservaTrenes
 {
     using CrossCutting.Enum;
+    using CrossCutting.Resources;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -21,8 +22,7 @@
                         return new Local1000_Train();
 
                 default:
-                    //TODO Mirar
-                    return new Express2000_Train();
+                    throw new Exception(Exceptions.TrainChoiceError);
             }
         }
 

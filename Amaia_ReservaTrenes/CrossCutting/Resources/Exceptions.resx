@@ -123,4 +123,7 @@
   <data name="NoCoachError" xml:space="preserve">
     <value>There is not coach is this train</value>
   </data>
+  <data name="TrainChoiceError" xml:space="preserve">
+    <value>There is not error, please choice another train</value>
+  </data>
 </root>
