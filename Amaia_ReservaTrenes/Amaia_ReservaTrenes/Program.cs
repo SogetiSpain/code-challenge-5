@@ -25,6 +25,9 @@
 
                 try
                 {
+                    var reservation = new TrainReservation(client);
+                    var reference = await reservation.GetTrainReservationReference();
+                    
                     var factoryTrainInfo = TrainInformationFactory.GetTrainInfo(Train.Express_2000);
                     var a = await factoryTrainInfo.GetInformation(client);
                 }

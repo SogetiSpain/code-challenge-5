@@ -53,6 +53,7 @@
     <Compile Include="TrainFactory\ITrainInformation.cs" />
     <Compile Include="TrainFactory\Local1000_Train.cs" />
     <Compile Include="TrainInformationFactory.cs" />
+    <Compile Include="TrainReservation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -10,5 +10,10 @@
             public static string Express2000 = Localhost + DataTrain + "express_2000";
             public static string Local1000 = Localhost + DataTrain + "local_1000";
         }
+
+        public static class TrainReservation
+        {
+            public static string Reservation = Localhost + "booking_reference";
+        }
     }
 }
