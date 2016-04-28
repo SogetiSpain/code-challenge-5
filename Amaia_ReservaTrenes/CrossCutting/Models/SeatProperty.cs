@@ -1,4 +1,4 @@
-﻿namespace Amaia_ReservaTrenes
+﻿namespace CrossCutting.Models
 {
     public class SeatProperty
     {

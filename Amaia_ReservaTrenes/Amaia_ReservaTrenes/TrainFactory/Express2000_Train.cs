@@ -8,6 +8,7 @@
     using System;
     using CrossCutting.Resources;
     using CrossCutting.Constants;
+    using CrossCutting.Models;
 
     public class Express2000_Train : ITrainInformation
     {

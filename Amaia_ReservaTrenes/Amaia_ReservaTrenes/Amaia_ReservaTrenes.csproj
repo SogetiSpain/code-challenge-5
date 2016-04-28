@@ -49,7 +49,6 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SeatProperty.cs" />
     <Compile Include="TrainFactory\Express2000_Train.cs" />
     <Compile Include="TrainFactory\ITrainInformation.cs" />
     <Compile Include="TrainFactory\Local1000_Train.cs" />
