@@ -12,6 +12,6 @@ namespace Amaia_ReservaTrenes.ReservationHandler
             this.successor = successor;
         }
 
-        public abstract void HandleReservationRequest(Dictionary<string, SeatProperty> seats);
+        public abstract void HandleReservationRequest(Dictionary<string, SeatProperty> seats, TrainReservation reservation);
     }
 }

@@ -14,6 +14,7 @@
         public static class TrainReservation
         {
             public static string Reservation = Url + "booking_reference";
+            public static string MakeReservation = Url + "reserve";
         }
     }
 }

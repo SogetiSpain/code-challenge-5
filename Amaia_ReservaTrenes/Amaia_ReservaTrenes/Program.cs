@@ -35,8 +35,6 @@
                     var train = await factoryTrainInfo.GetInformation(client);
 
                     //Handler coachHandlerOld;
-
-
                     // Setup Chain of Responsibility
                     //foreach (var item in train.Select(x => x.Value.coach).Distinct())
                     //{
@@ -46,7 +44,6 @@
                     //        coachHandlerOld.SetSuccessor(coachHandler);
                     //        coachHandlerOld = coachHandler;
                     //    }
-
                     //}
 
                     Handler coachHandler = new CoachHandler();

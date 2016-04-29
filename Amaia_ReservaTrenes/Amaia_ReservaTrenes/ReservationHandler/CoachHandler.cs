@@ -7,7 +7,7 @@
 
     public class CoachHandler : Handler
     {
-        public override void HandleReservationRequest(Dictionary<string, SeatProperty> seats)
+        public override void HandleReservationRequest(Dictionary<string, SeatProperty> seats, TrainReservation reservation)
         {
             var bookSeats = seats.Where(x => !string.IsNullOrEmpty(x.Value.booking_reference)).Count();
             var percentageOfBooking = (seats.Count() - bookSeats) / 100;
@@ -20,7 +20,7 @@
 
             else if (successor != null)
             {
-                successor.HandleReservationRequest(seats);
+                successor.HandleReservationRequest(seats, reservation);
             }
         }
     }
