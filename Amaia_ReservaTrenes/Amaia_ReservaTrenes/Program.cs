@@ -20,6 +20,7 @@
 
         private static async Task CallToWebApi()
         {
+            //TODO Singelton
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(Constants.Url);
@@ -28,6 +29,7 @@
 
                 try
                 {
+                    //TODO: Pedir al usuario en que tren quiere viajar y el número de asientos
                     var reservation = new TrainReservation(client);
                     var reference = await reservation.GetReservationReference();
                     
