@@ -16,5 +16,7 @@
             public static string Reservation = Url + "booking_reference";
             public static string MakeReservation = Url + "reserve";
         }
+
+        public static double Percentage = 0.7;
     }
 }

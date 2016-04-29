@@ -1,5 +1,6 @@
 ﻿namespace Amaia_ReservaTrenes.ReservationHandler
 {
+    using CrossCutting.Constants;
     using CrossCutting.Models;
     using System;
     using System.Collections.Generic;
@@ -12,7 +13,7 @@
             var bookSeats = seats.Where(x => !string.IsNullOrEmpty(x.Value.booking_reference)).Count();
             var percentageOfBooking = (seats.Count() - bookSeats) / 100;
 
-            if (percentageOfBooking < 0.7)
+            if (percentageOfBooking < Constants.Percentage)
             {
                 Console.WriteLine("Booked: {0} of {1}, percentage booked: {2}", bookSeats, seats.Count(), percentageOfBooking);
                 Console.WriteLine("{0} handled request The coach Can Book!! :D", this.GetType().Name);

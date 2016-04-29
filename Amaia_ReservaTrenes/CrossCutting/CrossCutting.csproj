@@ -47,6 +47,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants\Constants.cs" />
+    <Compile Include="Enum\Display.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Display.resx</DependentUpon>
+    </Compile>
     <Compile Include="Enum\Train.cs" />
     <Compile Include="Models\ReserveModel.cs" />
     <Compile Include="Models\SeatProperty.cs" />
@@ -61,6 +66,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Enum\Display.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Display.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Exceptions.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Exceptions.Designer.cs</LastGenOutput>
