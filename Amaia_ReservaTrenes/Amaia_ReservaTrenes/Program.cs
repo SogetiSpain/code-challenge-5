@@ -1,5 +1,6 @@
 ﻿namespace Amaia_ReservaTrenes
 {
+    using CrossCutting.Constants;
     using CrossCutting.Enum;
     using Newtonsoft.Json;
     using System;
@@ -19,7 +20,7 @@
         {
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://localhost:9600/");
+                client.BaseAddress = new Uri(Constants.Url);
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
