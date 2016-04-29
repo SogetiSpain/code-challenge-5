@@ -1,6 +1,7 @@
 ﻿namespace Amaia_ReservaTrenes.ReservationHandler
 {
     using CrossCutting.Models;
+    using CrossCutting.Resources;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -20,7 +21,7 @@
 
             else if (successor != null)
             {
-                successor.HandleReservationRequest(seats, reservation);
+                throw new Exception(Exceptions.CompletedReservationError);
             }
         }
     }

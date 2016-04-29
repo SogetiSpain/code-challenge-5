@@ -61,6 +61,15 @@ namespace CrossCutting.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You can not book, the train is completed.
+        /// </summary>
+        public static string CompletedReservationError {
+            get {
+                return ResourceManager.GetString("CompletedReservationError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error getting datas from the server.
         /// </summary>
         public static string ConnectionGettingErrors {
