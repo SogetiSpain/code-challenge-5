@@ -3,7 +3,7 @@
     public static class Constants
     {
         public static string Url = "http://localhost:9600/";
-        static string DataTrain = "data_for_train";
+        static string DataTrain = "data_for_train/";
 
         public static class TrainInfo
         {

@@ -16,7 +16,7 @@
             this.client = _client;
         }
 
-        public async Task<string> GetTrainReservationReference()
+        public async Task<string> GetReservationReference()
         {
             HttpResponseMessage response = await client.GetAsync(Constants.TrainReservation.Reservation);
 
