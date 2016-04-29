@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CrossCutting.Enum {
+namespace CrossCutting.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace CrossCutting.Enum {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CrossCutting.Enum.Display", typeof(Display).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CrossCutting.Resources.Display", typeof(Display).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

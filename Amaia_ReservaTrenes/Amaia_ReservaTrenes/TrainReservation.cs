@@ -29,7 +29,7 @@
             }
             else
             {
-                throw new Exception(Exceptions.ConnectionGettingErrors);
+                throw new Exception(Exceptions.ConnectionGettingDataError);
             }
         }
 
@@ -41,7 +41,7 @@
             }
             catch (Exception)
             {
-                throw new Exception(Exceptions.ConnectionGettingErrors);
+                throw new Exception(Exceptions.ConnectionGettingDataError);
             }
         }
     }

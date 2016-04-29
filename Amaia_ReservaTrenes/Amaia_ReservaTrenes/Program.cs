@@ -11,6 +11,7 @@
     using System.Threading.Tasks;
     using System.Linq;
     using CrossCutting.Models;
+    using CrossCutting.Resources;
     class Program
     {
         private static HttpClient client;
@@ -58,10 +59,18 @@
 
         private static void InitializeHttpClient()
         {
-            client = new HttpClient();
-            client.BaseAddress = new Uri(Constants.Url);
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            try
+            {
+                client = new HttpClient();
+                client.BaseAddress = new Uri(Constants.Url);
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            }
+            catch (Exception)
+            {
+                throw new Exception(Exceptions.ConnectionError);
+            }
+            
         }
 
         private async static Task MakeReservation(Train trainChoice)

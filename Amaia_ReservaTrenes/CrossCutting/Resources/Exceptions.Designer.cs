@@ -70,11 +70,20 @@ namespace CrossCutting.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error connection to train server.
+        /// </summary>
+        public static string ConnectionError {
+            get {
+                return ResourceManager.GetString("ConnectionError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error getting datas from the server.
         /// </summary>
-        public static string ConnectionGettingErrors {
+        public static string ConnectionGettingDataError {
             get {
-                return ResourceManager.GetString("ConnectionGettingErrors", resourceCulture);
+                return ResourceManager.GetString("ConnectionGettingDataError", resourceCulture);
             }
         }
         
