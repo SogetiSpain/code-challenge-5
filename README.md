@@ -3,7 +3,7 @@ Sogeti Code Challenge de Abril 2016
 =====================================
 Desafío #5: Reserva de trenes
 -----------------------------------
-Fecha límite: **3 de mayo 2016**
+Fecha límite: **19 de mayo 2016**
 
 No siempre tenemos el lujo de trabajar desde cero. Algunas veces tenemos que utilizar sistemas externos ya creados para poder hacer nuestra lógica de negocio. Por ejemplo, las compañías ferroviarias (ejem...) no son un ejemplo de modernidad y tienen, en general, muchos sistemas antiguos con los que hay que interactuar. De esto va nuestro challenge de este mes.
 
