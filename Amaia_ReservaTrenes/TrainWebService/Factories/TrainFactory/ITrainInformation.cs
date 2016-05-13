@@ -1,4 +1,4 @@
-﻿namespace Amaia_ReservaTrenes.TrainFactory
+﻿namespace TrainWebService.Factories.TrainFactory
 {
     using CrossCutting.Models;
     using System.Collections.Generic;

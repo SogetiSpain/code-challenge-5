@@ -1,20 +1,21 @@
-﻿namespace Amaia_ReservaTrenes.TrainFactory
+﻿namespace TrainWebService.Factories.TrainFactory
 {
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Net.Http;
-    using System.Threading.Tasks;
-    using System.Linq;
-    using System;
-    using CrossCutting.Resources;
     using CrossCutting.Constants;
     using CrossCutting.Models;
+    using CrossCutting.Resources;
+    using Newtonsoft.Json;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Net.Http;
+    using System.Text;
+    using System.Threading.Tasks;
 
-    public class Local1000_Train : ITrainInformation
+    public class Express2000_Train : ITrainInformation
     {
         public async Task<Dictionary<string, SeatProperty>> GetInformation(HttpClient client)
         {
-            HttpResponseMessage response = await client.GetAsync(Constants.TrainInfoUrl.Local1000);
+            HttpResponseMessage response = await client.GetAsync(Constants.TrainInfoUrl.Express2000);
 
             if (response.IsSuccessStatusCode)
             {
@@ -26,7 +27,6 @@
                 }
                 catch (Exception)
                 {
-
                     throw new Exception(Exceptions.NoCoachError);
                 }
             }

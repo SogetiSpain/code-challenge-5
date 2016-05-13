@@ -6,12 +6,14 @@
 
     class Program
     {
-        private static HttpClient client;
-        private static UserConsoleDatas userDatas;
+        static HttpClient client;
+        static UserConsoleDatas userDatas;
+        static Service service;
 
         static void Main(string[] args)
         {
-            client = Service.InitializeHttpClient();
+            service = new Service();
+            client = service.InitializeHttpClient();
             userDatas = new UserConsoleDatas();
             //TODO En los enum los numeros se comportan de una manera rara (si pones un número muy largo la consola se va)
             Start();

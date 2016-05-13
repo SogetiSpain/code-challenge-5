@@ -6,11 +6,11 @@
     using System.Net.Http;
     using System.Net.Http.Headers;
 
-    public static class Service
+    public class Service
     {
-        private static HttpClient client;
+        HttpClient client;
 
-        public static HttpClient InitializeHttpClient()
+        public HttpClient InitializeHttpClient()
         {
             try
             {

@@ -53,10 +53,6 @@
     <Compile Include="ReservationHandler\CoachHandler.cs" />
     <Compile Include="ReservationHandler\Handler.cs" />
     <Compile Include="ReservationHandler\TrainHandler.cs" />
-    <Compile Include="TrainFactory\Express2000_Train.cs" />
-    <Compile Include="TrainFactory\ITrainInformation.cs" />
-    <Compile Include="TrainFactory\Local1000_Train.cs" />
-    <Compile Include="TrainInformationFactory.cs" />
     <Compile Include="TrainReservation.cs" />
     <Compile Include="UserConsoleDatas.cs" />
   </ItemGroup>

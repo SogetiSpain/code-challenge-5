@@ -8,10 +8,12 @@
     using System;
     using System.Net.Http;
     using System.Threading.Tasks;
+    using TrainWebService;
 
     public class TrainReservation
     {
-        private HttpClient client;
+        HttpClient client;
+
 
         public TrainReservation(HttpClient _client)
         {
@@ -23,6 +25,7 @@
         {
             try
             {
+
                 //TODO: Pedir al usuario en que tren quiere viajar y el número de asientos
                 var reservationModel = new ReserveModel();
                 reservationModel.train_id = trainChoice.AsDisplayString();
@@ -30,8 +33,8 @@
                 var reservation = new TrainReservation(client);
                 reservationModel.booking_reference = await reservation.GetReservationReference();
 
-                var factoryTrainInfo = TrainInformationFactory.GetTrainInfo(trainChoice);
-                var train = await factoryTrainInfo.GetInformation(client);
+                //var factoryTrainInfo = TrainInformationFactory.GetTrainInfo(trainChoice);
+                //var train = await factoryTrainInfo.GetInformation(client);
 
                 //Handler coachHandler = new CoachHandler();
                 //Handler trainHandler = new TrainHandler();

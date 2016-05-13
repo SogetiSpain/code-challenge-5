@@ -1,25 +1,21 @@
-﻿namespace Amaia_ReservaTrenes
+﻿namespace TrainWebService.Factories
 {
     using CrossCutting.Enum;
     using CrossCutting.Resources;
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using TrainFactory;
 
-    public static class TrainInformationFactory
+    public class TrainInformationFactory
     {
         private static ITrainInformation GetInformation(Train train)
         {
             switch (train)
             {
                 case Train.E:
-                        return new Express2000_Train();
+                    return new Express2000_Train();
 
                 case Train.L:
-                        return new Local1000_Train();
+                    return new Local1000_Train();
 
                 default:
                     throw new Exception(Exceptions.TrainChoiceError);
@@ -28,7 +24,7 @@
 
         public static ITrainInformation GetTrainInfo(Train train)
         {
-           return GetInformation(train);
+            return GetInformation(train);
         }
     }
 }
