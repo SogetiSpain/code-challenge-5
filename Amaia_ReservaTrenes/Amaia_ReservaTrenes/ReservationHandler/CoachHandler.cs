@@ -4,24 +4,23 @@
     using CrossCutting.Models;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Net.Http;
 
     public class CoachHandler : Handler
     {
-        public override List<string> HandleReservationRequest(Dictionary<string, SeatProperty> seats, int numberSeats)
+        public override void HandleReservationRequest(Dictionary<string, SeatProperty> seats, ReserveModel reservationReference, int numberSeats, HttpClient client)
         {
             var bookSeats = seats.Where(x => !string.IsNullOrEmpty(x.Value.booking_reference)).Count();
             var percentageOfBooking = (seats.Count() - bookSeats) / 100;
             if (percentageOfBooking < Constants.Percentage)
             {
-                return new List<string>();
+                //return new List<string>();
 
             }
             else if (successor != null)
             {
-                return successor.HandleReservationRequest(seats, numberSeats);
+                successor.HandleReservationRequest(seats, reservationReference, numberSeats, client);
             }
-
-            return new List<string>();
         }
 
         private void FindSeatsTogether() {

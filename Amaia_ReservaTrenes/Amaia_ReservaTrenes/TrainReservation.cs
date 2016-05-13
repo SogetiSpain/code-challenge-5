@@ -5,6 +5,7 @@
     using CrossCutting.Models;
     using CrossCutting.Resources;
     using Newtonsoft.Json;
+    using ReservationHandler;
     using System;
     using System.Net.Http;
     using System.Threading.Tasks;
@@ -13,71 +14,33 @@
     public class TrainReservation
     {
         HttpClient client;
+        Service service;
 
 
-        public TrainReservation(HttpClient _client)
+        public TrainReservation(HttpClient _client, Service _service)
         {
             this.client = _client;
+            this.service = _service;
         }
 
-
-        public async Task MakeReservation(Train trainChoice, int seatNumber)
+        public async Task DoReservation(Train train, int seatNumber)
         {
             try
             {
-
-                //TODO: Pedir al usuario en que tren quiere viajar y el número de asientos
                 var reservationModel = new ReserveModel();
-                reservationModel.train_id = trainChoice.AsDisplayString();
+                reservationModel.train_id = train.AsDisplayString();
+                reservationModel.booking_reference = await this.service.GetReservationReference();
+                var seats = await this.service.GetTrainInformation(train);
 
-                var reservation = new TrainReservation(client);
-                reservationModel.booking_reference = await reservation.GetReservationReference();
-
-                //var factoryTrainInfo = TrainInformationFactory.GetTrainInfo(trainChoice);
-                //var train = await factoryTrainInfo.GetInformation(client);
-
-                //Handler coachHandler = new CoachHandler();
-                //Handler trainHandler = new TrainHandler();
-                //coachHandler.SetSuccessor(trainHandler);
-                //coachHandler.HandleReservationRequest(train, reservation);
-
-                /*
-                 coachHandler.HandleReservationRequest(train, reservation); me devuelva los asientos y luego yo llamar para hacer la reserva
-
-                o que el handler ya haga toda la reserva
-
-                 */
+                Handler coachHandler = new CoachHandler();
+                Handler trainHandler = new TrainHandler();
+                coachHandler.SetSuccessor(trainHandler);
+                coachHandler.HandleReservationRequest(seats, reservationModel, seatNumber, this.client);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-            }
-        }
-
-        public async Task<string> GetReservationReference()
-        {
-            HttpResponseMessage response = await client.GetAsync(Constants.TrainReservationUrl.Reservation);
-
-            if (response.IsSuccessStatusCode)
-            {
-                var result = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<string>(result);
-            }
-            else
-            {
-                throw new Exception(Exceptions.ConnectionGettingDataError);
-            }
-        }
-
-        public async Task DoReservation(ReserveModel reserve)
-        {
-            try
-            {
-                var response = await client.PostAsJsonAsync(Constants.TrainReservationUrl.MakeReservation, reserve);
-            }
-            catch (Exception)
-            {
-                throw new Exception(Exceptions.ConnectionGettingDataError);
+                throw new Exception(ex.Message);
             }
         }
     }

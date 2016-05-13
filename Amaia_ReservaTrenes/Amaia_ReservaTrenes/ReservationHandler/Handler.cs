@@ -1,8 +1,9 @@
-﻿using CrossCutting.Models;
-using System.Collections.Generic;
-
-namespace Amaia_ReservaTrenes.ReservationHandler
+﻿namespace Amaia_ReservaTrenes.ReservationHandler
 {
+    using CrossCutting.Models;
+    using System.Collections.Generic;
+    using System.Net.Http;
+
     public abstract class Handler
     {
         protected Handler successor;
@@ -12,6 +13,6 @@ namespace Amaia_ReservaTrenes.ReservationHandler
             this.successor = successor;
         }
 
-        public abstract List<string> HandleReservationRequest(Dictionary<string, SeatProperty> seats, int numberSeats);
+        public abstract void HandleReservationRequest(Dictionary<string, SeatProperty> seats, ReserveModel reservationReference, int numberSeats, HttpClient client);
     }
 }

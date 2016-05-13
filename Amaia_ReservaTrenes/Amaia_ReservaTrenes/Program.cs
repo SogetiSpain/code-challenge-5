@@ -54,14 +54,14 @@
 
         private static void StartReservation(Train train, int seatNumber)
         {
-            var trainReservation = new TrainReservation(client);
+            var trainReservation = new TrainReservation(client, service);
             switch (train)
             {
                 case Train.E:
-                    trainReservation.MakeReservation(Train.E, seatNumber).Wait();
+                    trainReservation.DoReservation(Train.E, seatNumber).Wait();
                     break;
                 case Train.L:
-                    trainReservation.MakeReservation(Train.L, seatNumber).Wait();
+                    trainReservation.DoReservation(Train.L, seatNumber).Wait();
                     break;
                 default:
                     break;
