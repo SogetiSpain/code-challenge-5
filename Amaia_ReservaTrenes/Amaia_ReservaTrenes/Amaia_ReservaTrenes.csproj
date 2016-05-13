@@ -58,6 +58,7 @@
     <Compile Include="TrainFactory\Local1000_Train.cs" />
     <Compile Include="TrainInformationFactory.cs" />
     <Compile Include="TrainReservation.cs" />
+    <Compile Include="UserConsoleDatas.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -67,6 +68,10 @@
     <ProjectReference Include="..\CrossCutting\CrossCutting.csproj">
       <Project>{12d9f7dc-2b96-477b-a47e-318cacbcbfae}</Project>
       <Name>CrossCutting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TrainWebService\TrainWebService.csproj">
+      <Project>{322c99f4-9204-4056-b129-cffd6aaf8f06}</Project>
+      <Name>TrainWebService</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

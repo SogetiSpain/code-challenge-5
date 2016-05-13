@@ -15,10 +15,10 @@
         {
             switch (train)
             {
-                case Train.Express_2000:
+                case Train.E:
                         return new Express2000_Train();
 
-                case Train.Local_1000:
+                case Train.L:
                         return new Local1000_Train();
 
                 default:

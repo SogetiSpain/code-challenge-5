@@ -14,7 +14,7 @@
     {
         public async Task<Dictionary<string, SeatProperty>> GetInformation(HttpClient client)
         {
-            HttpResponseMessage response = await client.GetAsync(Constants.TrainInfo.Express2000);
+            HttpResponseMessage response = await client.GetAsync(Constants.TrainInfoUrl.Express2000);
 
             if (response.IsSuccessStatusCode)
             {

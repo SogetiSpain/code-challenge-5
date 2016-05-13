@@ -59,5 +59,32 @@ namespace CrossCutting.Resources {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ¿Quiere hacer una (R)eserva, (B)orrar todos los datos o (S)alir?.
+        /// </summary>
+        public static string AskoToUserMenu {
+            get {
+                return ResourceManager.GetString("AskoToUserMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ¿Número de asientos?.
+        /// </summary>
+        public static string AskoToUserSeatsNumber {
+            get {
+                return ResourceManager.GetString("AskoToUserSeatsNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ¿(L)ocal 1000 o en (E)xpress 2000?.
+        /// </summary>
+        public static string AskoToUserTrain {
+            get {
+                return ResourceManager.GetString("AskoToUserTrain", resourceCulture);
+            }
+        }
     }
 }

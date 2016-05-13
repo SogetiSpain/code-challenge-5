@@ -1,125 +1,68 @@
 ﻿namespace Amaia_ReservaTrenes
 {
-    using CrossCutting.Constants;
     using CrossCutting.Enum;
-    using Newtonsoft.Json;
-    using ReservationHandler;
-    using System;
-    using System.Collections.Generic;
     using System.Net.Http;
-    using System.Net.Http.Headers;
-    using System.Threading.Tasks;
-    using System.Linq;
-    using CrossCutting.Models;
-    using CrossCutting.Resources;
+    using TrainWebService;
+
     class Program
     {
         private static HttpClient client;
+        private static UserConsoleDatas userDatas;
 
         static void Main(string[] args)
         {
-            InitializeHttpClient();
-            var exit = false;
-            do
-            {
-                //Console.WriteLine(Display.AskOrderToUser);
-                //Console.WriteLine(Display.Order);
-                try
-                {
-                    string value = Console.ReadLine();
-                    Train option = (Train)Enum.Parse(typeof(Train), value.ToUpper());
-                    exit = MenuAction(option, exit);
-                }
-                catch (Exception)
-                {
-                    //Console.WriteLine(Exceptions.LetterAskException);
-                }
-            } while (!exit);
+            client = Service.InitializeHttpClient();
+            userDatas = new UserConsoleDatas();
+            //TODO En los enum los numeros se comportan de una manera rara (si pones un número muy largo la consola se va)
+            Start();
+
         }
 
-        public static bool MenuAction(Train option, bool exit)
+        private static void Start()
+        {
+            var choice = userDatas.AskUserForMainOptions();
+            MenuAction(choice);
+        }
+
+        private static void MenuAction(ChoiceMenu option)
         {
             switch (option)
             {
-                case Train.Express_2000:
-                    MakeReservation(Train.Express_2000).Wait();
+                case ChoiceMenu.R:
+                    AskForTrainProperties();
                     break;
-                case Train.Local_1000:
-                    MakeReservation(Train.Local_1000).Wait();
+                case ChoiceMenu.S:
                     break;
-                case Train.Exit:
-                    exit = true;
+                case ChoiceMenu.B:
+                    //TODO limpiar todos los datos
+                    Start();
                     break;
                 default:
                     break;
             }
-
-            return exit;
         }
 
-        private static void InitializeHttpClient()
+        private static void AskForTrainProperties()
         {
-            try
-            {
-                client = new HttpClient();
-                client.BaseAddress = new Uri(Constants.Url);
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            }
-            catch (Exception)
-            {
-                throw new Exception(Exceptions.ConnectionError);
-            }
-            
+            var train = userDatas.AskUserForChooseTrain();
+            var seatsNumber = userDatas.AskUserForHowManySeats();
+            //Todo Mirar si el número que ha metido es mayor que 0, si es cero o negativo, throw Exceptions
+            StartReservation(train, seatsNumber);
         }
 
-        private async static Task MakeReservation(Train trainChoice)
+        private static void StartReservation(Train train, int seatNumber)
         {
-            try
+            var trainReservation = new TrainReservation(client);
+            switch (train)
             {
-                //TODO: Pedir al usuario en que tren quiere viajar y el número de asientos
-                var reservationModel = new ReserveModel();
-
-                var reservation = new TrainReservation(client);
-                reservationModel.booking_reference = await reservation.GetReservationReference();
-
-                var factoryTrainInfo = TrainInformationFactory.GetTrainInfo(trainChoice);
-                var train = await factoryTrainInfo.GetInformation(client);
-
-
-                //Handler coachHandlerOld;
-                // Setup Chain of Responsibility
-                //foreach (var item in train.Select(x => x.Value.coach).Distinct())
-                //{
-                //    Handler coachHandler = new CoachHandler();
-                //    if (coachHandlerOld != null)
-                //    {
-                //        coachHandlerOld.SetSuccessor(coachHandler);
-                //        coachHandlerOld = coachHandler;
-                //    }
-                //}
-
-                Handler coachHandler = new CoachHandler();
-                Handler trainHandler = new TrainHandler();
-                coachHandler.SetSuccessor(trainHandler);
-
-                coachHandler.HandleReservationRequest(train, reservation);
-
-                /*
-                 coachHandler.HandleReservationRequest(train, reservation); me devuelva los asientos y luego yo llamar para hacer la reserva
-
-                o que el handler ya haga toda la reserva
-
-                 */
-
-
-                // Wait for user
-                Console.ReadKey();
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+                case Train.E:
+                    trainReservation.MakeReservation(Train.E, seatNumber).Wait();
+                    break;
+                case Train.L:
+                    trainReservation.MakeReservation(Train.L, seatNumber).Wait();
+                    break;
+                default:
+                    break;
             }
         }
     }

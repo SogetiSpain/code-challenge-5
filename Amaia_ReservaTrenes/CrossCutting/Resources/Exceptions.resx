@@ -118,18 +118,21 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CompletedReservationError" xml:space="preserve">
-    <value>You can not book, the train is completed</value>
+    <value>El tren está completo</value>
   </data>
   <data name="ConnectionError" xml:space="preserve">
-    <value>Error connection to train server</value>
+    <value>Error al conectar con el servidor</value>
   </data>
   <data name="ConnectionGettingDataError" xml:space="preserve">
-    <value>Error getting datas from the server</value>
+    <value>Error al obtener los datos del servidor</value>
+  </data>
+  <data name="LetterAskException" xml:space="preserve">
+    <value>Letra no reconocida, inténtelo otra vez</value>
   </data>
   <data name="NoCoachError" xml:space="preserve">
-    <value>There is not coach is this train</value>
+    <value>El tren no dispone de vagones</value>
   </data>
   <data name="TrainChoiceError" xml:space="preserve">
-    <value>There is not error, please choice another train</value>
+    <value>El tren no existe, inténtelo de nuevo</value>
   </data>
 </root>
