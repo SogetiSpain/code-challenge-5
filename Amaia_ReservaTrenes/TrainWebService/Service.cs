@@ -64,15 +64,23 @@
             }
         }
 
-        public async Task CleanAllBooking(Train train)
+        public async Task<bool> CleanAllBooking(Train train)
         {
             try
             {
-                var response = await client.GetAsync(Constants.CleanAll + train.AsDisplayString());
+                var response = await client.PostAsync(Constants.CleanAll + train.AsDisplayString(), null);
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+                else
+                {
+                    throw new Exception(ExceptionsMessage.DeletingDataError);
+                }
             }
             catch (Exception)
             {
-                throw new Exception(ExceptionsMessage.ConnectionGettingDataError);
+                throw new Exception(ExceptionsMessage.ConnectionError);
             }
         }
     }

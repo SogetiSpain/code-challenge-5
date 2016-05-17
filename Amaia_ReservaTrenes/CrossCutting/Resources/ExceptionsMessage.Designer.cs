@@ -88,6 +88,15 @@ namespace CrossCutting.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error al borrarlas reservas del tren.
+        /// </summary>
+        public static string DeletingDataError {
+            get {
+                return ResourceManager.GetString("DeletingDataError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to El número se asientos tiene que se mayor que cero.
         /// </summary>
         public static string LessThanZeroException {

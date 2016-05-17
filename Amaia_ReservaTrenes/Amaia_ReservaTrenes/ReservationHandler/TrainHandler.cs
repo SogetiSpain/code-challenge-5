@@ -12,13 +12,16 @@
     {
         public override void HandleReservationRequest(Dictionary<string, SeatProperty> trainInfo, ReserveModel reservationReference, int numberSeats, Service service)
         {
-            var bookSeats = trainInfo.Where(x => !string.IsNullOrEmpty(x.Value.booking_reference)).Count();
-            var percentageOfBooking = (trainInfo.Count() - bookSeats) / 100;
-            if (percentageOfBooking < Constants.Percentage)
-            {
+            this.CheckIfIsMoreThan70PercentBooking(trainInfo, numberSeats);
 
-            }
-            else if (successor != null)
+            //TODO que reserve en el coach que tenga sitio
+        }
+
+        public void CheckIfIsMoreThan70PercentBooking(IEnumerable<KeyValuePair<string, SeatProperty>> trainInfo, int numberSeats)
+        {
+            var bookSeats = trainInfo.Where(x => !string.IsNullOrEmpty(x.Value.booking_reference)).ToDictionary(x => x.Key, x => x.Value).Count();
+            var percentageOfBooking = (bookSeats + numberSeats) / Convert.ToDouble(trainInfo.Count());
+            if (percentageOfBooking > Constants.Percentage)
             {
                 throw new Exception(ExceptionsMessage.CompletedReservationError);
             }
