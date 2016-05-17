@@ -27,7 +27,7 @@
             }
         }
 
-        public bool HandleEachCoachReservation(IEnumerable<KeyValuePair<string, SeatProperty>> coachInfo, ReserveModel reservationReference, Service service, int numberSeats, string coach) {
+        bool HandleEachCoachReservation(IEnumerable<KeyValuePair<string, SeatProperty>> coachInfo, ReserveModel reservationReference, Service service, int numberSeats, string coach) {
 
             try
             {
@@ -42,7 +42,7 @@
             }
         }
 
-        public void CheckIfIsMoreThan70PercentBooking(IEnumerable<KeyValuePair<string, SeatProperty>> coachInfo, int numberSeats)
+        void CheckIfIsMoreThan70PercentBooking(IEnumerable<KeyValuePair<string, SeatProperty>> coachInfo, int numberSeats)
         {
             var bookSeats = coachInfo.Where(x => !string.IsNullOrEmpty(x.Value.booking_reference)).ToDictionary(x => x.Key, x => x.Value).Count();
             var percentageOfBooking = (bookSeats + numberSeats) / Convert.ToDouble(coachInfo.Count());
@@ -52,7 +52,7 @@
             }
         }
 
-        public IEnumerable<string> BookSeats(IEnumerable<KeyValuePair<string, SeatProperty>> coachInfo, string coach, int numberSeats)
+        IEnumerable<string> BookSeats(IEnumerable<KeyValuePair<string, SeatProperty>> coachInfo, string coach, int numberSeats)
         {
             var seats = new List<string>();
             var freeSeats = coachInfo.Where(x => string.IsNullOrEmpty(x.Value.booking_reference)).ToDictionary(x => x.Key, x => x.Value).First();
@@ -66,7 +66,7 @@
             return seats;
         }
 
-        public void DoReservation(ReserveModel reservationReference, Service service)
+        void DoReservation(ReserveModel reservationReference, Service service)
         {
             service.AddReservation(reservationReference).Wait();
         }
