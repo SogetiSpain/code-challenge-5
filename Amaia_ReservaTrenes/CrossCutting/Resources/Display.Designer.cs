@@ -88,6 +88,15 @@ namespace CrossCutting.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Se han borrado todas las reservas del tren {0}.
+        /// </summary>
+        public static string CleanSuccess {
+            get {
+                return ResourceManager.GetString("CleanSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to La reserva se ha realizado con éxito en el tren {0}, asiento(s): {1}.
         /// </summary>
         public static string SeatBookingComplete {

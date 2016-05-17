@@ -1,6 +1,8 @@
 ﻿namespace Amaia_ReservaTrenes
 {
     using CrossCutting.Enum;
+    using CrossCutting.Resources;
+    using System;
     using System.Net.Http;
     using TrainWebService;
 
@@ -72,6 +74,7 @@
         {
             var train = userDatas.AskUserForChooseTrain();
             service.CleanAllBooking(train).Wait();
+            Console.WriteLine(string.Format(Display.CleanSuccess, train.AsDisplayString()));
         }
     }
 }

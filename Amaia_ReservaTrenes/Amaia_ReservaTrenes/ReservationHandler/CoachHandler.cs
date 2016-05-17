@@ -57,13 +57,12 @@
             var seats = new List<string>();
             var freeSeats = coachInfo.Where(x => string.IsNullOrEmpty(x.Value.booking_reference)).ToDictionary(x => x.Key, x => x.Value).First();
 
-
-            //TODO mirar cuantos asientos libres quedas y el número de asientos que quiere el usuario
             for (int i = 0; i < numberSeats; i++)
             {
                 var num = freeSeats.Value.seat_number + i;
                 seats.Add(num + coach);
             }
+
             return seats;
         }
 
