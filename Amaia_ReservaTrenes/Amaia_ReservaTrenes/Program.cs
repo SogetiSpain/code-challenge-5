@@ -20,13 +20,13 @@
 
         }
 
-        private static void Start()
+        static void Start()
         {
             var choice = userDatas.AskUserForMainOptions();
             MenuAction(choice);
         }
 
-        private static void MenuAction(ChoiceMenu option)
+        static void MenuAction(ChoiceMenu option)
         {
             switch (option)
             {
@@ -45,14 +45,14 @@
             }
         }
 
-        private static void AskForTrainProperties()
+        static void AskForTrainProperties()
         {
             var train = userDatas.AskUserForChooseTrain();
             var seatsNumber = userDatas.AskUserForHowManySeats();
             StartReservation(train, seatsNumber);
         }
         
-        private static void StartReservation(Train train, int seatNumber)
+        static void StartReservation(Train train, int seatNumber)
         {
             var trainReservation = new TrainReservation(service);
             switch (train)
@@ -68,7 +68,7 @@
             }
         }
 
-        private static void AskForTrainToDelete()
+        static void AskForTrainToDelete()
         {
             var train = userDatas.AskUserForChooseTrain();
             service.CleanAllBooking(train).Wait();

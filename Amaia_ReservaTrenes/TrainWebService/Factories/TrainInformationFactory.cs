@@ -7,7 +7,7 @@
 
     public class TrainInformationFactory
     {
-        private static ITrainInformation GetInformation(Train train)
+        static ITrainInformation GetInformation(Train train)
         {
             switch (train)
             {

@@ -41,7 +41,7 @@
             }
         }
 
-        private void PrintUserInfoBooking(ReserveModel reservationModel)
+        void PrintUserInfoBooking(ReserveModel reservationModel)
         {
             Console.WriteLine(string.Format(Display.SeatBookingComplete, reservationModel.train_id, string.Join(",", reservationModel.seats)));
         }
