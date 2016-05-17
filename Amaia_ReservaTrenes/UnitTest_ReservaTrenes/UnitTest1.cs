@@ -19,9 +19,19 @@
         }
 
         [TestMethod]
-        public void TrainWebService_CleanLocal100Train()
+        public void TrainWebService_CleanLocal1000Train()
         {
             Train train = Train.L;
+            service.CleanAllBooking(train).Wait();
+            var info = service.GetTrainInformation(train).Result;
+
+            Assert.AreEqual(0, info.Where(x => !string.IsNullOrEmpty(x.Value.booking_reference)).ToDictionary(x => x.Key, x => x.Value).Count());
+        }
+
+        [TestMethod]
+        public void TrainWebService_CleanExpress2000Train()
+        {
+            Train train = Train.E;
             service.CleanAllBooking(train).Wait();
             var info = service.GetTrainInformation(train).Result;
 
