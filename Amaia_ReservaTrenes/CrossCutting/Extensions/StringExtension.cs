@@ -1,12 +1,12 @@
-﻿using CrossCutting.Exceptions;
-
-namespace CrossCutting.Extensions
+﻿namespace CrossCutting.Extensions
 {
-    public static class ConvertExtension
+    using CrossCutting.Exceptions;
+    using Resources;
+    using System;
+    public static class StringExtension
     {
         public static int ConvertToIntAndBiggerThanZero(this string value)
         {
-            //TODO Cuando sea menos que 0 saltar la custom exception (LessThanZeroException)
             try
             {
                 var converted = int.Parse(value);
@@ -17,10 +17,13 @@ namespace CrossCutting.Extensions
                 }
                 return converted;
             }
-            catch (System.Exception)
+            catch (LessThanZeroException)
             {
-
                 throw new LessThanZeroException();
+            }
+            catch (Exception)
+            {
+                throw new Exception(ExceptionsMessage.InvalidNumberException);
             }
         }
     }

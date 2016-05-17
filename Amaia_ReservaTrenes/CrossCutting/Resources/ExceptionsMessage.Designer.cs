@@ -97,7 +97,16 @@ namespace CrossCutting.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to El número se asientos tiene que se mayor que cero.
+        ///   Looks up a localized string similar to Introduzca un número válido.
+        /// </summary>
+        public static string InvalidNumberException {
+            get {
+                return ResourceManager.GetString("InvalidNumberException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El número ser asientos tiene que se mayor que cero.
         /// </summary>
         public static string LessThanZeroException {
             get {

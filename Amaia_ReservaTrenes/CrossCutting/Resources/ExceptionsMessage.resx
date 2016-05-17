@@ -129,8 +129,11 @@
   <data name="DeletingDataError" xml:space="preserve">
     <value>Error al borrarlas reservas del tren</value>
   </data>
+  <data name="InvalidNumberException" xml:space="preserve">
+    <value>Introduzca un número válido</value>
+  </data>
   <data name="LessThanZeroException" xml:space="preserve">
-    <value>El número se asientos tiene que se mayor que cero</value>
+    <value>El número ser asientos tiene que se mayor que cero</value>
   </data>
   <data name="LetterAskException" xml:space="preserve">
     <value>Letra no reconocida, inténtelo otra vez</value>

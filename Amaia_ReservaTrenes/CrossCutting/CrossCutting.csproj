@@ -50,7 +50,7 @@
     <Compile Include="Enum\ChoiceMenu.cs" />
     <Compile Include="Enum\Train.cs" />
     <Compile Include="Exceptions\LessThanZeroException.cs" />
-    <Compile Include="Extensions\ConvertExtension.cs" />
+    <Compile Include="Extensions\StringExtension.cs" />
     <Compile Include="Models\ReserveModel.cs" />
     <Compile Include="Models\SeatProperty.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,6 +72,7 @@
     <EmbeddedResource Include="Resources\Display.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Display.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\ExceptionsMessage.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

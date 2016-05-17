@@ -3,7 +3,8 @@
     using CrossCutting.Enum;
     using CrossCutting.Resources;
     using System;
-
+    using CrossCutting.Extensions;
+    using CrossCutting.Exceptions;
     public class UserConsoleDatas
     {
         public ChoiceMenu AskUserForMainOptions()
@@ -42,11 +43,16 @@
             {
                 Console.WriteLine(Display.AskoToUserSeatsNumber);
                 string value = Console.ReadLine();
-                return int.Parse(value);
+                return value.ConvertToIntAndBiggerThanZero();
             }
-            catch (Exception)
+            catch (LessThanZeroException ex)
             {
-                Console.WriteLine(ExceptionsMessage.LetterAskException);
+                Console.WriteLine(ex.Message);
+                return AskUserForHowManySeats();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
                 return AskUserForHowManySeats();
             }
         }

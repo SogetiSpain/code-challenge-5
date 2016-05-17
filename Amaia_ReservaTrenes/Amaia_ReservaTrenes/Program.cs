@@ -49,7 +49,6 @@
         {
             var train = userDatas.AskUserForChooseTrain();
             var seatsNumber = userDatas.AskUserForHowManySeats();
-            //Todo Mirar si el número que ha metido es mayor que 0, si es cero o negativo, throw Exceptions
             StartReservation(train, seatsNumber);
         }
         
