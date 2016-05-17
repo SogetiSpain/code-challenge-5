@@ -31,7 +31,7 @@
 
             try
             {
-                CheckIfIsMoreThan70PercentBooking(coachInfo);
+                CheckIfIsMoreThan70PercentBooking(coachInfo, numberSeats);
                 reservationReference.seats = this.BookSeats(coachInfo, coach, numberSeats);
                 this.DoReservation(reservationReference, service);
                 return true;
@@ -42,11 +42,11 @@
             }
         }
 
-        public void CheckIfIsMoreThan70PercentBooking(IEnumerable<KeyValuePair<string, SeatProperty>> coachInfo)
+        public void CheckIfIsMoreThan70PercentBooking(IEnumerable<KeyValuePair<string, SeatProperty>> coachInfo, int numberSeats)
         {
             var bookSeats = coachInfo.Where(x => !string.IsNullOrEmpty(x.Value.booking_reference)).ToDictionary(x => x.Key, x => x.Value).Count();
-            var percentageOfBooking = Convert.ToDouble((coachInfo.Count() - bookSeats) / 100);
-            if (percentageOfBooking < Constants.Percentage)
+            var percentageOfBooking = (bookSeats + numberSeats) / Convert.ToDouble(coachInfo.Count());
+            if (percentageOfBooking > Constants.Percentage)
             {
                 throw new Exception();
             }

@@ -36,7 +36,7 @@
                 case ChoiceMenu.S:
                     break;
                 case ChoiceMenu.B:
-                    //TODO limpiar todos los datos
+                    AskForTrainToDelete();
                     Start();
                     break;
                 default:
@@ -51,7 +51,7 @@
             //Todo Mirar si el número que ha metido es mayor que 0, si es cero o negativo, throw Exceptions
             StartReservation(train, seatsNumber);
         }
-
+        
         private static void StartReservation(Train train, int seatNumber)
         {
             var trainReservation = new TrainReservation(service);
@@ -66,6 +66,12 @@
                 default:
                     break;
             }
+        }
+
+        private static void AskForTrainToDelete()
+        {
+            var train = userDatas.AskUserForChooseTrain();
+            service.CleanAllBooking(train).Wait();
         }
     }
 }

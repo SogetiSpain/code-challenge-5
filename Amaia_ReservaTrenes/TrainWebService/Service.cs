@@ -63,5 +63,17 @@
                 throw new Exception(ExceptionsMessage.ConnectionGettingDataError);
             }
         }
+
+        public async Task CleanAllBooking(Train train)
+        {
+            try
+            {
+                var response = await client.GetAsync(Constants.CleanAll + train.AsDisplayString());
+            }
+            catch (Exception)
+            {
+                throw new Exception(ExceptionsMessage.ConnectionGettingDataError);
+            }
+        }
     }
 }
