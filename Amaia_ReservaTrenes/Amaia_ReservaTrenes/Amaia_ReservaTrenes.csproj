@@ -55,6 +55,7 @@
     <Compile Include="ReservationHandler\TrainHandler.cs" />
     <Compile Include="TrainReservation.cs" />
     <Compile Include="UserConsoleDatas.cs" />
+    <Compile Include="Utils\HandlerUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

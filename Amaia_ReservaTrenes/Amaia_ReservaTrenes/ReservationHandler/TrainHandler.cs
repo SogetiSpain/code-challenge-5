@@ -6,14 +6,24 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Net.Http;
     using TrainWebService;
+    using Utils;
+
     public class TrainHandler : Handler
     {
-        public override void HandleReservationRequest(Dictionary<string, SeatProperty> trainInfo, ReserveModel reservationReference, int numberSeats, Service service)
+        HandlerUtils utils;
+        Service service;
+
+        public TrainHandler(HandlerUtils _utils, Service _service)
+        {
+            this.utils = _utils;
+            this.service = _service;
+        }
+
+        public override void HandleReservationRequest(Dictionary<string, SeatProperty> trainInfo, ReserveModel reservationReference, int numberSeats)
         {
             this.CheckIfIsMoreThan70PercentBooking(trainInfo, numberSeats);
-            this.CheckCoachAndBook(trainInfo, reservationReference, numberSeats, service);
+            this.CheckCoachAndBook(trainInfo, reservationReference, numberSeats);
         }
 
         void CheckIfIsMoreThan70PercentBooking(Dictionary<string, SeatProperty> trainInfo, int numberSeats)
@@ -26,12 +36,12 @@
             }
         }
 
-        void CheckCoachAndBook(Dictionary<string, SeatProperty> trainInfo, ReserveModel reservationReference, int numberSeats, Service service)
+        void CheckCoachAndBook(Dictionary<string, SeatProperty> trainInfo, ReserveModel reservationReference, int numberSeats)
         {
             bool hasBook = false;
             foreach (var coachInfo in trainInfo.Select(x => x.Value.coach).Distinct())
             {
-                hasBook = this.HandleEachCoachReservation(trainInfo.Where(x => x.Value.coach.Equals(coachInfo)), reservationReference, service, numberSeats, coachInfo);
+                hasBook = this.HandleEachCoachReservation(trainInfo.Where(x => x.Value.coach.Equals(coachInfo)), reservationReference, numberSeats, coachInfo);
                 if (hasBook)
                 {
                     break;
@@ -44,14 +54,14 @@
             }
         }
 
-        bool HandleEachCoachReservation(IEnumerable<KeyValuePair<string, SeatProperty>> coachInfo, ReserveModel reservationReference, Service service, int numberSeats, string coach)
+        bool HandleEachCoachReservation(IEnumerable<KeyValuePair<string, SeatProperty>> coachInfo, ReserveModel reservationReference, int numberSeats, string coach)
         {
 
             try
             {
                 this.CheckIfHasSeatsFree(coachInfo, numberSeats);
-                reservationReference.seats = this.BookSeats(coachInfo, coach, numberSeats);
-                this.DoReservation(reservationReference, service);
+                reservationReference.seats = this.utils.BookSeats(coachInfo, coach, numberSeats);
+                this.utils.DoReservation(reservationReference, this.service);
                 return true;
             }
             catch (Exception)
@@ -67,25 +77,6 @@
             {
                 throw new Exception();
             }
-        }
-
-        IEnumerable<string> BookSeats(IEnumerable<KeyValuePair<string, SeatProperty>> coachInfo, string coach, int numberSeats)
-        {
-            var seats = new List<string>();
-            var freeSeats = coachInfo.Where(x => string.IsNullOrEmpty(x.Value.booking_reference)).ToDictionary(x => x.Key, x => x.Value).First();
-
-            for (int i = 0; i < numberSeats; i++)
-            {
-                var num = freeSeats.Value.seat_number + i;
-                seats.Add(num + coach);
-            }
-
-            return seats;
-        }
-
-        void DoReservation(ReserveModel reservationReference, Service service)
-        {
-            service.AddReservation(reservationReference).Wait();
         }
     }
 }

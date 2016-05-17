@@ -3,7 +3,6 @@
     using CrossCutting.Enum;
     using CrossCutting.Resources;
     using System;
-    using System.Net.Http;
     using TrainWebService;
 
     class Program

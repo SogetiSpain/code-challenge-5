@@ -15,6 +15,6 @@
 
         //TODO Cuando se ctor de la clase (Service modelo se instance)
 
-        public abstract void HandleReservationRequest(Dictionary<string, SeatProperty> trainInfo, ReserveModel reservationReference, int numberSeats, Service service);
+        public abstract void HandleReservationRequest(Dictionary<string, SeatProperty> trainInfo, ReserveModel reservationReference, int numberSeats);
     }
 }

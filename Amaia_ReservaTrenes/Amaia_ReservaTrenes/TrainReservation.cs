@@ -7,15 +7,17 @@
     using System;
     using System.Threading.Tasks;
     using TrainWebService;
-    using System.Linq;
+    using Utils;
 
     public class TrainReservation
     {
         Service service;
+        HandlerUtils utils;
 
         public TrainReservation(Service _service)
         {
             this.service = _service;
+            this.utils = new HandlerUtils();
         }
 
         public async Task DoReservation(Train train, int seatNumber)
@@ -27,10 +29,10 @@
                 reservationModel.booking_reference = await this.service.GetReservationReference();
                 var trainInfo = await this.service.GetTrainInformation(train);
 
-                Handler coachHandler = new CoachHandler();
-                Handler trainHandler = new TrainHandler();
+                Handler coachHandler = new CoachHandler(this.utils, this.service);
+                Handler trainHandler = new TrainHandler(this.utils, this.service);
                 coachHandler.SetSuccessor(trainHandler);
-                coachHandler.HandleReservationRequest(trainInfo, reservationModel, seatNumber, this.service);
+                coachHandler.HandleReservationRequest(trainInfo, reservationModel, seatNumber);
                 this.PrintUserInfoBooking(reservationModel);
             }
             catch (Exception ex)
