@@ -1,27 +1,27 @@
-﻿namespace CrossCutting.Extensions
+﻿using CrossCutting.Exceptions;
+
+namespace CrossCutting.Extensions
 {
     public static class ConvertExtension
     {
         public static int ConvertToIntAndBiggerThanZero(this string value)
         {
-            return 1;
             //TODO Cuando sea menos que 0 saltar la custom exception (LessThanZeroException)
-            //try
-            //{
-            //    var converted = int.Parse(value);
+            try
+            {
+                var converted = int.Parse(value);
 
-            //    if (converted <= 0)
-            //    {
-            //        throw 
-            //    }
+                if (converted <= 0)
+                {
+                    throw new LessThanZeroException();
+                }
+                return converted;
+            }
+            catch (System.Exception)
+            {
 
-            //}
-            //catch (System.Exception)
-            //{
-
-            //    throw;
-            //}
-           
+                throw new LessThanZeroException();
+            }
         }
     }
 }

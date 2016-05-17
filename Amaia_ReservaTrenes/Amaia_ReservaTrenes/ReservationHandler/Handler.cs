@@ -3,7 +3,7 @@
     using CrossCutting.Models;
     using System.Collections.Generic;
     using System.Net.Http;
-
+    using TrainWebService;
     public abstract class Handler
     {
         protected Handler successor;
@@ -13,6 +13,8 @@
             this.successor = successor;
         }
 
-        public abstract void HandleReservationRequest(Dictionary<string, SeatProperty> seats, ReserveModel reservationReference, int numberSeats, HttpClient client);
+        //TODO Cuando se ctor de la clase (Service modelo se instance)
+
+        public abstract void HandleReservationRequest(Dictionary<string, SeatProperty> trainInfo, ReserveModel reservationReference, int numberSeats, Service service);
     }
 }

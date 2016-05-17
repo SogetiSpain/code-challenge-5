@@ -6,14 +6,13 @@
 
     class Program
     {
-        static HttpClient client;
         static UserConsoleDatas userDatas;
         static Service service;
 
         static void Main(string[] args)
         {
             service = new Service();
-            client = service.InitializeHttpClient();
+            service.InitializeHttpClient();
             userDatas = new UserConsoleDatas();
             //TODO En los enum los numeros se comportan de una manera rara (si pones un número muy largo la consola se va)
             Start();
@@ -32,6 +31,7 @@
             {
                 case ChoiceMenu.R:
                     AskForTrainProperties();
+                    Start();
                     break;
                 case ChoiceMenu.S:
                     break;
@@ -54,7 +54,7 @@
 
         private static void StartReservation(Train train, int seatNumber)
         {
-            var trainReservation = new TrainReservation(client, service);
+            var trainReservation = new TrainReservation(service);
             switch (train)
             {
                 case Train.E:

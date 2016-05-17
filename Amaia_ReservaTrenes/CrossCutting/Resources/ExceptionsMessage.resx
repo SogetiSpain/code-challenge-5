@@ -126,6 +126,9 @@
   <data name="ConnectionGettingDataError" xml:space="preserve">
     <value>Error al obtener los datos del servidor</value>
   </data>
+  <data name="LessThanZeroException" xml:space="preserve">
+    <value>El número se asientos tiene que se mayor que cero</value>
+  </data>
   <data name="LetterAskException" xml:space="preserve">
     <value>Letra no reconocida, inténtelo otra vez</value>
   </data>

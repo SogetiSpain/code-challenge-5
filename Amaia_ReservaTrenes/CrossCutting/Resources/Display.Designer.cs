@@ -86,5 +86,14 @@ namespace CrossCutting.Resources {
                 return ResourceManager.GetString("AskoToUserTrain", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to La reserva se ha realizado con éxito en el tren {0}, asiento(s): {1}.
+        /// </summary>
+        public static string SeatBookingComplete {
+            get {
+                return ResourceManager.GetString("SeatBookingComplete", resourceCulture);
+            }
+        }
     }
 }

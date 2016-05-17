@@ -22,14 +22,14 @@ namespace CrossCutting.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Exceptions {
+    public class ExceptionsMessage {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Exceptions() {
+        internal ExceptionsMessage() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace CrossCutting.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CrossCutting.Resources.Exceptions", typeof(Exceptions).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CrossCutting.Resources.ExceptionsMessage", typeof(ExceptionsMessage).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -84,6 +84,15 @@ namespace CrossCutting.Resources {
         public static string ConnectionGettingDataError {
             get {
                 return ResourceManager.GetString("ConnectionGettingDataError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El número se asientos tiene que se mayor que cero.
+        /// </summary>
+        public static string LessThanZeroException {
+            get {
+                return ResourceManager.GetString("LessThanZeroException", resourceCulture);
             }
         }
         

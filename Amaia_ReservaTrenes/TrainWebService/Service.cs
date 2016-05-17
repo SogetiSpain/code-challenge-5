@@ -16,7 +16,7 @@
     {
         HttpClient client;
 
-        public HttpClient InitializeHttpClient()
+        public void InitializeHttpClient()
         {
             try
             {
@@ -24,11 +24,10 @@
                 client.BaseAddress = new Uri(Constants.Url);
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                return client;
             }
             catch (Exception)
             {
-                throw new Exception(Exceptions.ConnectionError);
+                throw new Exception(ExceptionsMessage.ConnectionError);
             }
         }
 
@@ -49,7 +48,7 @@
             }
             else
             {
-                throw new Exception(Exceptions.ConnectionGettingDataError);
+                throw new Exception(ExceptionsMessage.ConnectionGettingDataError);
             }
         }
 
@@ -61,7 +60,7 @@
             }
             catch (Exception)
             {
-                throw new Exception(Exceptions.ConnectionGettingDataError);
+                throw new Exception(ExceptionsMessage.ConnectionGettingDataError);
             }
         }
     }

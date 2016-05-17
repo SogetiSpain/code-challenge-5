@@ -16,7 +16,7 @@
             }
             catch (Exception)
             {
-                Console.WriteLine(Exceptions.LetterAskException);
+                Console.WriteLine(ExceptionsMessage.LetterAskException);
                 return AskUserForMainOptions();
             }
         }
@@ -31,7 +31,7 @@
             }
             catch (Exception)
             {
-                Console.WriteLine(Exceptions.LetterAskException);
+                Console.WriteLine(ExceptionsMessage.LetterAskException);
                 return AskUserForChooseTrain();
             }
         }
@@ -46,7 +46,7 @@
             }
             catch (Exception)
             {
-                Console.WriteLine(Exceptions.LetterAskException);
+                Console.WriteLine(ExceptionsMessage.LetterAskException);
                 return AskUserForHowManySeats();
             }
         }

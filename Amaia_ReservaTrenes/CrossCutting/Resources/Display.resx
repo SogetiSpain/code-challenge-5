@@ -126,4 +126,7 @@
   <data name="AskoToUserTrain" xml:space="preserve">
     <value>¿(L)ocal 1000 o en (E)xpress 2000?</value>
   </data>
+  <data name="SeatBookingComplete" xml:space="preserve">
+    <value>La reserva se ha realizado con éxito en el tren {0}, asiento(s): {1}</value>
+  </data>
 </root>

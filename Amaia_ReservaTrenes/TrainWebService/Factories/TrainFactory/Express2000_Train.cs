@@ -27,12 +27,12 @@
                 }
                 catch (Exception)
                 {
-                    throw new Exception(Exceptions.NoCoachError);
+                    throw new Exception(ExceptionsMessage.NoCoachError);
                 }
             }
             else
             {
-                throw new Exception(Exceptions.ConnectionGettingDataError);
+                throw new Exception(ExceptionsMessage.ConnectionGettingDataError);
             }
         }
     }

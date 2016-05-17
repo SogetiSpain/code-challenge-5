@@ -7,20 +7,20 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Net.Http;
-
+    using TrainWebService;
     public class TrainHandler : Handler
     {
-        public override void HandleReservationRequest(Dictionary<string, SeatProperty> seats, ReserveModel reservationReference, int numberSeats, HttpClient client)
+        public override void HandleReservationRequest(Dictionary<string, SeatProperty> trainInfo, ReserveModel reservationReference, int numberSeats, Service service)
         {
-            var bookSeats = seats.Where(x => !string.IsNullOrEmpty(x.Value.booking_reference)).Count();
-            var percentageOfBooking = (seats.Count() - bookSeats) / 100;
+            var bookSeats = trainInfo.Where(x => !string.IsNullOrEmpty(x.Value.booking_reference)).Count();
+            var percentageOfBooking = (trainInfo.Count() - bookSeats) / 100;
             if (percentageOfBooking < Constants.Percentage)
             {
 
             }
             else if (successor != null)
             {
-                throw new Exception(Exceptions.CompletedReservationError);
+                throw new Exception(ExceptionsMessage.CompletedReservationError);
             }
         }
     }

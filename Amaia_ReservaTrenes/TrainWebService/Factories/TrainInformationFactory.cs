@@ -18,7 +18,7 @@
                     return new Local1000_Train();
 
                 default:
-                    throw new Exception(Exceptions.TrainChoiceError);
+                    throw new Exception(ExceptionsMessage.TrainChoiceError);
             }
         }
 

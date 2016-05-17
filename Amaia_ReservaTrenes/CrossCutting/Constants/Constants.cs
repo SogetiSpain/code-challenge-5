@@ -17,7 +17,7 @@
             public static string MakeReservation = Url + "reserve";
         }
 
-        public static double Percentage = 0.7;
+        public static double Percentage = 0.3;
 
         public static class TrainId
         {

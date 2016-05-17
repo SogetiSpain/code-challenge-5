@@ -1,25 +1,20 @@
 ﻿namespace Amaia_ReservaTrenes
 {
-    using CrossCutting.Constants;
     using CrossCutting.Enum;
     using CrossCutting.Models;
     using CrossCutting.Resources;
-    using Newtonsoft.Json;
     using ReservationHandler;
     using System;
-    using System.Net.Http;
     using System.Threading.Tasks;
     using TrainWebService;
+    using System.Linq;
 
     public class TrainReservation
     {
-        HttpClient client;
         Service service;
 
-
-        public TrainReservation(HttpClient _client, Service _service)
+        public TrainReservation(Service _service)
         {
-            this.client = _client;
             this.service = _service;
         }
 
@@ -30,18 +25,24 @@
                 var reservationModel = new ReserveModel();
                 reservationModel.train_id = train.AsDisplayString();
                 reservationModel.booking_reference = await this.service.GetReservationReference();
-                var seats = await this.service.GetTrainInformation(train);
+                var trainInfo = await this.service.GetTrainInformation(train);
 
                 Handler coachHandler = new CoachHandler();
                 Handler trainHandler = new TrainHandler();
                 coachHandler.SetSuccessor(trainHandler);
-                coachHandler.HandleReservationRequest(seats, reservationModel, seatNumber, this.client);
+                coachHandler.HandleReservationRequest(trainInfo, reservationModel, seatNumber, this.service);
+                this.PrintUserInfoBooking(reservationModel);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 throw new Exception(ex.Message);
             }
+        }
+
+        private void PrintUserInfoBooking(ReserveModel reservationModel)
+        {
+            Console.WriteLine(string.Format(Display.SeatBookingComplete, reservationModel.train_id, string.Join(",", reservationModel.seats)));
         }
     }
 }
